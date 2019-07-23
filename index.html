@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todolist</title>
+</head>
+<body bgcolor="#f0e68c">
+<style>
+    .a {
+        width: auto;
+        height: 40px;
+        font-size: 35px;
+        background-color: silver;
+        border: solid 1px;
+        border-radius: 5px;
+    }
+    .c{display: flex; width: 100%; align-content: center;}
+</style>
+<div style="display: flex; width: 100%; align-content: center;">
+<input class="a" id="o1">
+    <div onclick="risovat('')" style="width: 50px; height: 50px; cursor: pointer;">
+    <img src="images (2).png" height="40" width="40"/>
+</div>
+</div>
+<br>
+<div id="render"></div>
+</body>
+<script>
+    var list = [];
+    function risovat() {
+        if (document.getElementById('o1').value.length>0 ) {
+            list.push(document.getElementById('o1').value);
+            render();
+            document.getElementById('o1').value = " "
+        }
+    }
+    function render() {
+        document.getElementById('render').innerHTML='';
+        for(var i=0;i<list.length;i++){
+            var e = document.createElement('div');
+            e.className='c';
+            e.innerHTML = '<div class="a" style="">'+list[i]+'</div>' +
+                '<div onclick="del('+i+')" style="width: 50px; height: 50px; cursor: pointer">' +
+                '<img style="width: 44px; height: 44px;" src="w256h2561350657674trash.png"' +
+                '</div>';
+            document.getElementById('render').appendChild(e)
+        }
+    }
+    function del(id) {
+        list.splice(id, 1);
+        render();
+    }
+</script>
+</html>
