@@ -43,5 +43,12 @@
             document.getElementById('render').appendChild(e)
         }
     }
+    var del = document.getElementsByClassName('e')
+    for(var i=0;i<del.length;i++){
+        del[i].onclick = function () {
+            var div = this.parentElement;
+            div.style.display = 'none';
+        }
+    }
 </script>
 </html>
